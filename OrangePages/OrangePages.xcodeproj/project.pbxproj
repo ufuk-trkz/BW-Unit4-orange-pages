@@ -9,21 +9,37 @@
 /* Begin PBXBuildFile section */
 		E106127E24539333001650BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106127D24539333001650BA /* AppDelegate.swift */; };
 		E106128024539333001650BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106127F24539333001650BA /* SceneDelegate.swift */; };
-		E106128224539333001650BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106128124539333001650BA /* ViewController.swift */; };
 		E106128524539333001650BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E106128324539333001650BA /* Main.storyboard */; };
 		E106128724539337001650BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E106128624539337001650BA /* Assets.xcassets */; };
 		E106128A24539337001650BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E106128824539337001650BA /* LaunchScreen.storyboard */; };
+		E1DE8B3F2455DF6000838893 /* ContactsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B3E2455DF6000838893 /* ContactsCollectionViewController.swift */; };
+		E1DE8B4124563CC200838893 /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B4024563CC200838893 /* FavoritesCollectionViewController.swift */; };
+		E1DE8B4324563D3300838893 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B4224563D3300838893 /* ContactDetailViewController.swift */; };
+		E1DE8B4524570AB800838893 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B4424570AB800838893 /* ProfileViewController.swift */; };
+		E1DE8B4724570BC700838893 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B4624570BC700838893 /* Contact.swift */; };
+		E1DE8B4924570C4E00838893 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B4824570C4E00838893 /* ContactController.swift */; };
+		E1DE8B4B24570C9000838893 /* ContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B4A24570C9000838893 /* ContactCollectionViewCell.swift */; };
+		E1DE8B4D24570F8900838893 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DE8B4C24570F8900838893 /* Login.storyboard */; };
+		E1DE8B4F2457258800838893 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE8B4E2457258800838893 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E106127A24539333001650BA /* OrangePages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangePages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E106127D24539333001650BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E106127F24539333001650BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E106128124539333001650BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E106128424539333001650BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E106128624539337001650BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E106128924539337001650BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E106128B24539337001650BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1DE8B3E2455DF6000838893 /* ContactsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCollectionViewController.swift; sourceTree = "<group>"; };
+		E1DE8B4024563CC200838893 /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
+		E1DE8B4224563D3300838893 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		E1DE8B4424570AB800838893 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E1DE8B4624570BC700838893 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E1DE8B4824570C4E00838893 /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
+		E1DE8B4A24570C9000838893 /* ContactCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewCell.swift; sourceTree = "<group>"; };
+		E1DE8B4C24570F8900838893 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E1DE8B4E2457258800838893 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,31 @@
 		E106127C24539333001650BA /* OrangePages */ = {
 			isa = PBXGroup;
 			children = (
-				E106127D24539333001650BA /* AppDelegate.swift */,
-				E106127F24539333001650BA /* SceneDelegate.swift */,
-				E106128124539333001650BA /* ViewController.swift */,
+				E1DE8B4C24570F8900838893 /* Login.storyboard */,
 				E106128324539333001650BA /* Main.storyboard */,
-				E106128624539337001650BA /* Assets.xcassets */,
-				E106128824539337001650BA /* LaunchScreen.storyboard */,
+				E1DE8B4E2457258800838893 /* LoginViewController.swift */,
+				E1DE8B4624570BC700838893 /* Contact.swift */,
+				E1DE8B4824570C4E00838893 /* ContactController.swift */,
+				E1DE8B4224563D3300838893 /* ContactDetailViewController.swift */,
+				E1DE8B4424570AB800838893 /* ProfileViewController.swift */,
+				E1DE8B4024563CC200838893 /* FavoritesCollectionViewController.swift */,
+				E1DE8B3E2455DF6000838893 /* ContactsCollectionViewController.swift */,
+				E1DE8B4A24570C9000838893 /* ContactCollectionViewCell.swift */,
+				E1DE8B3D2455D23000838893 /* Resources */,
 				E106128B24539337001650BA /* Info.plist */,
 			);
 			path = OrangePages;
+			sourceTree = "<group>";
+		};
+		E1DE8B3D2455D23000838893 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E106127D24539333001650BA /* AppDelegate.swift */,
+				E106127F24539333001650BA /* SceneDelegate.swift */,
+				E106128624539337001650BA /* Assets.xcassets */,
+				E106128824539337001650BA /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1DE8B4D24570F8900838893 /* Login.storyboard in Resources */,
 				E106128A24539337001650BA /* LaunchScreen.storyboard in Resources */,
 				E106128724539337001650BA /* Assets.xcassets in Resources */,
 				E106128524539333001650BA /* Main.storyboard in Resources */,
@@ -138,9 +171,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E106128224539333001650BA /* ViewController.swift in Sources */,
+				E1DE8B4524570AB800838893 /* ProfileViewController.swift in Sources */,
+				E1DE8B4124563CC200838893 /* FavoritesCollectionViewController.swift in Sources */,
+				E1DE8B4924570C4E00838893 /* ContactController.swift in Sources */,
+				E1DE8B4324563D3300838893 /* ContactDetailViewController.swift in Sources */,
+				E1DE8B3F2455DF6000838893 /* ContactsCollectionViewController.swift in Sources */,
 				E106127E24539333001650BA /* AppDelegate.swift in Sources */,
 				E106128024539333001650BA /* SceneDelegate.swift in Sources */,
+				E1DE8B4724570BC700838893 /* Contact.swift in Sources */,
+				E1DE8B4F2457258800838893 /* LoginViewController.swift in Sources */,
+				E1DE8B4B24570C9000838893 /* ContactCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
