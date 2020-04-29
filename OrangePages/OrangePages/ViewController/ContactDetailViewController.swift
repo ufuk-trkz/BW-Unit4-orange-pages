@@ -17,11 +17,22 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var infoTV: UITextView!
     
+    var contact: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        guard let contact = contact else { return }
+        updateviews(with: contact)
     }
+    
+    func updateviews(with contact: User) {
+        nameLabel.text = contact.name
+        emailLabel.text = contact.email
+        phoneLabel.text = contact.phone
+        infoTV.text = contact.info
+    }
+    
     @IBAction func favorize(_ sender: Any) {
          
     }
