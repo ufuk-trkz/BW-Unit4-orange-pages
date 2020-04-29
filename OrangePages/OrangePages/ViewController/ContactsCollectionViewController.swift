@@ -10,7 +10,10 @@ import UIKit
 
 private let reuseIdentifier = "ContactCell"
 
-class ContactsCollectionViewController: UICollectionViewController, UISearchBarDelegate {
+class ContactsCollectionViewController: UICollectionViewController {
+    
+    var searchList: [User] = []
+    var contact: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,6 @@ class ContactsCollectionViewController: UICollectionViewController, UISearchBarD
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
         createSearchBar()
@@ -34,15 +36,18 @@ class ContactsCollectionViewController: UICollectionViewController, UISearchBarD
         
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetailSegue" {
+            guard let detailVC = segue.destination as? ContactDetailViewController else { return }
+            //guard let cell = sender as? FavoriteCollectionViewCell else { return }
+            if let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
+                detailVC.contact = searchList[indexPath.row]
+            }
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -54,13 +59,13 @@ class ContactsCollectionViewController: UICollectionViewController, UISearchBarD
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 1
+        return searchList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath) as? ContactCollectionViewCell else { return UICollectionViewCell()}
         // Configure the cell
+        cell.contact = self.contact
     
         return cell
     }
@@ -96,4 +101,29 @@ class ContactsCollectionViewController: UICollectionViewController, UISearchBarD
     }
     */
 
+}
+
+extension ContactsCollectionViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text/*?.lowercased()*/ else { return }
+        
+        UserController.shared.search(name: searchTerm) { (user, error) in
+            if let error = error {
+                NSLog("Error during search: \(error)")
+                return
+            }
+            
+            if let user = user {
+                print("User: \(user.name)")
+                DispatchQueue.main.async {
+                    self.contact = user
+                    self.searchList.removeAll()
+                    self.searchList.append(user)
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        
+    }
 }
