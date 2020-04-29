@@ -205,7 +205,7 @@
                                             <constraint firstAttribute="height" constant="40" id="CTp-X2-uqf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -290,16 +290,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fki-yi-lOy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1196" y="86"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="4eQ-2F-1Ft">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="Czz-yV-inW" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="BOK-Zd-Y4x"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7fD-5f-fKf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2027" y="86"/>
         </scene>
     </scenes>
     <resources>

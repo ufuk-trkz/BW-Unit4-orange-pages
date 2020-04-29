@@ -12,23 +12,24 @@
         <!--Orange Pages-->
         <scene sceneID="pwf-ZD-l4o">
             <objects>
-                <collectionViewController storyboardIdentifier="HomeVC" id="n0M-Vo-cqR" customClass="ContactsCollectionViewController" customModule="OrangePages" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="n0M-Vo-cqR" customClass="ContactsCollectionViewController" customModule="OrangePages" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="kfJ-Co-SFE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O7P-cS-80h">
-                            <size key="itemSize" width="414" height="37"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O7P-cS-80h">
+                            <size key="itemSize" width="414" height="117"/>
+                            <size key="estimatedItemSize" width="414" height="117"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContactCell" id="dgv-zv-iy4" customClass="ContactCollectionViewCell" customModule="OrangePages" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oBn-yk-lo5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZJZ-0W-i5t">
@@ -100,14 +101,13 @@
                                         <constraint firstItem="ZJZ-0W-i5t" firstAttribute="leading" secondItem="oBn-yk-lo5" secondAttribute="leading" constant="8" id="gJP-Qj-bqF"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="414" height="116"/>
                                 <connections>
                                     <outlet property="contactIV" destination="ZJZ-0W-i5t" id="rii-Hs-Xv7"/>
                                     <outlet property="emailLabel" destination="pPF-dP-pQg" id="893-7w-HJP"/>
                                     <outlet property="favButton" destination="Ipf-yQ-nGb" id="j6V-oX-NtC"/>
                                     <outlet property="nameLabel" destination="6Yb-TK-Z0h" id="Mn6-1N-sRo"/>
                                     <outlet property="phoneLabel" destination="rkp-j1-0ra" id="Tcx-oE-gOj"/>
-                                    <segue destination="sQ0-kc-dcO" kind="show" id="9Fb-V4-B3F"/>
+                                    <segue destination="sQ0-kc-dcO" kind="show" identifier="ShowDetailSegue" id="9Fb-V4-B3F"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -137,12 +137,6 @@
                                     <constraint firstAttribute="height" constant="200" id="w5i-Eq-kg5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSI-9v-nu1">
-                                <rect key="frame" x="134.5" y="316" width="145.5" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ski-gY-HBe">
                                 <rect key="frame" x="20" y="365" width="374" height="95.5"/>
                                 <subviews>
@@ -155,7 +149,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMM-VR-kfb">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMM-VR-kfb">
                                                 <rect key="frame" x="75" y="0.0" width="299" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -171,7 +165,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fMc-LB-Axb">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fMc-LB-Axb">
                                                 <rect key="frame" x="76" y="0.0" width="298" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -186,10 +180,9 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-8X-irF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-8X-irF">
                                 <rect key="frame" x="20" y="468.5" width="374" height="324.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -204,22 +197,30 @@
                                     <action selector="selectImage:" destination="l4e-Mq-tl4" eventType="touchUpInside" id="l4M-YV-ikd"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V9p-dF-bg2">
+                                <rect key="frame" x="134.5" y="316" width="145.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Nnv-Tl-PZH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6wH-Um-IrZ" firstAttribute="trailing" secondItem="ZHc-8X-irF" secondAttribute="trailing" constant="20" id="1RF-Ps-mVW"/>
                             <constraint firstItem="6wH-Um-IrZ" firstAttribute="trailing" secondItem="ski-gY-HBe" secondAttribute="trailing" constant="20" id="58m-XP-G5p"/>
-                            <constraint firstItem="NSI-9v-nu1" firstAttribute="centerX" secondItem="6oJ-Lv-sVI" secondAttribute="centerX" id="Ast-Xz-Xl9"/>
                             <constraint firstItem="ski-gY-HBe" firstAttribute="leading" secondItem="6wH-Um-IrZ" secondAttribute="leading" constant="20" id="Kbi-cX-qlD"/>
                             <constraint firstItem="ZHc-8X-irF" firstAttribute="leading" secondItem="6wH-Um-IrZ" secondAttribute="leading" constant="20" id="Vze-Qg-w4E"/>
                             <constraint firstItem="gd9-kv-FsF" firstAttribute="top" secondItem="6wH-Um-IrZ" secondAttribute="top" constant="20" id="Y9y-SL-dPc"/>
                             <constraint firstItem="Ga7-Dz-98t" firstAttribute="top" secondItem="6wH-Um-IrZ" secondAttribute="top" constant="20" id="a3w-Jj-S09"/>
-                            <constraint firstItem="NSI-9v-nu1" firstAttribute="top" secondItem="Ga7-Dz-98t" secondAttribute="bottom" constant="8" id="aW0-tt-c34"/>
                             <constraint firstItem="gd9-kv-FsF" firstAttribute="centerX" secondItem="6oJ-Lv-sVI" secondAttribute="centerX" id="abO-4D-IjP"/>
                             <constraint firstItem="Ga7-Dz-98t" firstAttribute="centerX" secondItem="6oJ-Lv-sVI" secondAttribute="centerX" id="chx-pB-qy7"/>
                             <constraint firstItem="ZHc-8X-irF" firstAttribute="top" secondItem="ski-gY-HBe" secondAttribute="bottom" constant="8" id="dhm-3B-BFV"/>
+                            <constraint firstItem="V9p-dF-bg2" firstAttribute="top" secondItem="Ga7-Dz-98t" secondAttribute="bottom" constant="8" id="kfk-uW-fFB"/>
                             <constraint firstItem="6wH-Um-IrZ" firstAttribute="bottom" secondItem="ZHc-8X-irF" secondAttribute="bottom" constant="20" id="mbL-BQ-O22"/>
-                            <constraint firstItem="ski-gY-HBe" firstAttribute="top" secondItem="NSI-9v-nu1" secondAttribute="bottom" constant="8" id="qfY-lz-2ev"/>
+                            <constraint firstItem="V9p-dF-bg2" firstAttribute="centerX" secondItem="6oJ-Lv-sVI" secondAttribute="centerX" id="p0o-Sp-xOC"/>
+                            <constraint firstItem="ski-gY-HBe" firstAttribute="top" secondItem="Ga7-Dz-98t" secondAttribute="bottom" constant="57" id="zcU-3V-A2i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6wH-Um-IrZ"/>
                     </view>
@@ -235,7 +236,7 @@
                         <outlet property="emailTF" destination="fMc-LB-Axb" id="my5-W0-5CU"/>
                         <outlet property="imageButton" destination="gd9-kv-FsF" id="Su5-wo-ZjB"/>
                         <outlet property="infoTV" destination="ZHc-8X-irF" id="Rgf-tQ-BA0"/>
-                        <outlet property="nameLabel" destination="NSI-9v-nu1" id="kCd-CN-di4"/>
+                        <outlet property="nameTF" destination="V9p-dF-bg2" id="siP-on-Rz5"/>
                         <outlet property="phoneTF" destination="EMM-VR-kfb" id="AIw-xO-ZWg"/>
                         <outlet property="profileIV" destination="Ga7-Dz-98t" id="ybZ-gs-PzT"/>
                     </connections>
@@ -252,18 +253,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="95k-1c-Cx1">
-                            <size key="itemSize" width="414" height="37"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="95k-1c-Cx1">
+                            <size key="itemSize" width="414" height="117"/>
+                            <size key="estimatedItemSize" width="414" height="117"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContactCell" id="hxM-eI-lTV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoriteCell" id="hxM-eI-lTV" customClass="FavoriteCollectionViewCell" customModule="OrangePages" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SpW-ko-vfW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AiI-gm-VGe">
@@ -326,8 +328,11 @@
                                         <constraint firstItem="B0q-B1-P3m" firstAttribute="leading" secondItem="AiI-gm-VGe" secondAttribute="trailing" constant="8" id="dXi-oo-Ge4"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="414" height="116"/>
                                 <connections>
+                                    <outlet property="contactIV" destination="AiI-gm-VGe" id="Jdy-Hi-9Pz"/>
+                                    <outlet property="emailLabel" destination="Iks-qQ-062" id="ZFs-HH-ZSo"/>
+                                    <outlet property="nameLabel" destination="7j6-S5-alz" id="rK4-nc-Rm0"/>
+                                    <outlet property="phoneLabel" destination="4Ao-iS-xoC" id="N4R-Ls-7Ae"/>
                                     <segue destination="sQ0-kc-dcO" kind="show" id="Aea-Yq-0gM"/>
                                 </connections>
                             </collectionViewCell>
@@ -350,7 +355,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="b9Y-oA-PQk">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uno-AJ-HO0" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="uno-AJ-HO0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fea-64-APX">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -479,7 +484,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9vx-w2-whl">
                                 <rect key="frame" x="20" y="468.5" width="374" height="324.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
