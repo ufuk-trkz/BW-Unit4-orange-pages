@@ -37,7 +37,7 @@ class ContactsCollectionViewController: UICollectionViewController {
             guard let detailVC = segue.destination as? ContactDetailViewController else { return }
             //guard let cell = sender as? FavoriteCollectionViewCell else { return }
             if let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
-                detailVC.contact = searchList[indexPath.row]
+                detailVC.contact = searchList[indexPath.item]
             }
         }
     }

@@ -18,24 +18,32 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var infoTV: UITextView!
     
-    var contact: User?
-    var contactID: String?
+    var contact: User? {
+        didSet {
+            guard let contact = contact else { return }
+            getContact(with: contact.id)
+        }
+    }
+    var contactID: String? {
+        didSet {
+            guard let contactID = contactID else { return }
+            getContact(with: contactID)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getContact()
     }
     
     func updateviews(with contact: User) {
-        nameLabel.text = contact.name
-        emailLabel.text = contact.email
-        phoneLabel.text = contact.phone
-        infoTV.text = contact.info
+        nameLabel?.text = contact.name
+        emailLabel?.text = contact.email
+        phoneLabel?.text = contact.phone
+        infoTV?.text = contact.info
         
-        contactIV.layer.cornerRadius = contactIV.frame.size.width / 2
-        contactIV.layer.borderWidth = 1
-        contactIV.clipsToBounds = true
+        contactIV?.layer.cornerRadius = contactIV.frame.size.width / 2
+        contactIV?.layer.borderWidth = 1
+        contactIV?.clipsToBounds = true
         if let imageURL = contact.image {
             UserController.shared.downloadImage(from: imageURL) { (image) in
                 guard let image = image else { return }
@@ -58,8 +66,7 @@ class ContactDetailViewController: UIViewController {
         favButton.image = UIImage(systemName: "star.fill")
     }
     
-    func getContact() {
-        guard let contactID = self.contactID else { return }
+    func getContact(with contactID: String) {
         UserController.shared.getUser(for: contactID) { (user, error) in
             if let error = error {
                 NSLog("Error getting user: \(error)")
@@ -67,7 +74,6 @@ class ContactDetailViewController: UIViewController {
             }
             
             guard let user = user else { return }
-            self.contact = user
             self.updateviews(with: user)
         }
     }

@@ -22,8 +22,8 @@ class ContactCollectionViewCell: UICollectionViewCell {
     var contact: User? {
         didSet {
             guard let contact = contact else { return }
-            updateViews(with: contact)
-            getCurrentUser()
+            getContact(with: contact.id)
+            //getCurrentUser()
             favButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
     }
@@ -41,7 +41,7 @@ class ContactCollectionViewCell: UICollectionViewCell {
     }
     
     func updateViews(with contact: User) {
-        //contactIV.image = contact?.image
+        
         nameLabel.text = contact.name
         phoneLabel.text = contact.phone
         emailLabel.text = contact.email
@@ -49,12 +49,17 @@ class ContactCollectionViewCell: UICollectionViewCell {
         contactIV.layer.cornerRadius = contactIV.frame.size.width / 2
         contactIV.layer.borderWidth = 1
         contactIV.clipsToBounds = true
+        
         if let imageURL = contact.image {
             UserController.shared.downloadImage(from: imageURL) { (image) in
                 guard let image = image else { return }
                 DispatchQueue.main.async {
                     self.contactIV?.image = image
                 }
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.contactIV?.image = UIImage(systemName: "person.crop.circle")
             }
         }
     }
@@ -71,6 +76,20 @@ class ContactCollectionViewCell: UICollectionViewCell {
             self.user = user
             print("CurrentUser: \(user.name)")
         }
+    }
+    
+    func getContact(with contactID: String) {
+        UserController.shared.getUser(for: contactID) { (user, error) in
+            if let error = error {
+                NSLog("Error getting user: \(error)")
+                return
+            }
+            
+            guard let user = user else { return }
+            self.updateViews(with: user)
+        }
+        
+        
     }
     
 }

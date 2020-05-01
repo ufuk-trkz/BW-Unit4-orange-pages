@@ -45,13 +45,13 @@ class FavoritesCollectionViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.collectionView.reloadData()
+        getCurrentUser()
     }
 
     // MARK: UICollectionViewDataSource
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetailSegue" {
+        if segue.identifier == "ShowFavoriteSegue" {
             guard let detailVC = segue.destination as? ContactDetailViewController else { return }
             //guard let cell = sender as? FavoriteCollectionViewCell else { return }
             if let indexPath = self.collectionView.indexPathsForSelectedItems?.first {
