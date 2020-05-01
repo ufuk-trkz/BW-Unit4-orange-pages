@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var profileIV: UIImageView!
@@ -30,8 +30,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         imagePC.delegate = self
         getCurrentUser()
     }
@@ -44,36 +43,54 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func configureViews() {
         if isEditingProfile {
-            print("is editting")
-            self.navigationItem.rightBarButtonItem?.title = "Save"
             imageButton.isEnabled = true
             nameTF.isEnabled = true
             nameTF.borderStyle = .roundedRect
             phoneTF.isEnabled = true
             phoneTF.borderStyle = .roundedRect
-            // STRETCH:
-            //emailTF.isUserInteractionEnabled = true
-            //emailTF.borderStyle = .roundedRect
             infoTV.isEditable = true
+            changetitle()
         } else {
-            print("is not editting")
-            self.navigationItem.rightBarButtonItem?.title = "Edit"
             imageButton.isHidden = true
             nameTF.isEnabled = false
             nameTF.borderStyle = .none
             phoneTF.isEnabled = false
             phoneTF.borderStyle = .none
-//            emailTF.isUserInteractionEnabled = false
-//            emailTF.borderStyle = .none
             infoTV.isEditable = false
+            changetitle()
+        }
+    }
+    
+    func changetitle() {
+        let item = self.navigationItem.rightBarButtonItem!
+        if isEditing {
+            item.title = "Save"
+            editButton = item
+            print("Button Title: Save")
+        } else {
+            item.title = "Edit"
+            editButton = item
+            print("Button Title: Edit")
         }
     }
     
     func updateviews(with user: User) {
-        nameTF.text = user.name
-        emailTF.text = user.email
-        phoneTF.text = user.phone
-        infoTV.text = user.info
+        nameTF?.text = user.name
+        emailTF?.text = user.email
+        phoneTF?.text = user.phone
+        infoTV?.text = user.info
+        
+        profileIV.layer.cornerRadius = profileIV.frame.size.width / 2
+        profileIV.layer.borderWidth = 1
+        profileIV.clipsToBounds = true
+        if let imageURL = user.image {
+            UserController.shared.downloadImage(from: imageURL) { (image) in
+                guard let image = image else { return }
+                DispatchQueue.main.async {
+                    self.profileIV?.image = image
+                }
+            }
+        }
     }
     
     @IBAction func selectImage(_ sender: Any) {
@@ -85,10 +102,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 self.imagePC.sourceType = .camera
                 self.present(self.imagePC, animated: true, completion: nil) }
             else { print("Camera not available") } }))
+        
         actionSheet.addAction(UIAlertAction(title: "Photo Libary", style: .default , handler: { (sction: UIAlertAction) in
             self.imagePC.sourceType = .photoLibrary
             self.present(self.imagePC, animated: true, completion: nil) }))
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
         self.present(actionSheet, animated: true)
     }
     
@@ -97,26 +117,30 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         profileIV.image = image
         dismiss(animated: true, completion: nil)
         imageButton.isHidden = true
+        
+        guard let user = self.user else { return }
+        UserController.shared.updateUserWithImage(user: user, image: image) { (error) in
+            if let error = error {
+                NSLog("Error updating profile pic \(error)")
+            }
+        }
     }
     
     @IBAction func edit(_ sender: Any) {
         print(isEditingProfile)
         if isEditingProfile {
-            isEditingProfile.toggle()
+            isEditingProfile = false
             updateProfile()
         } else {
-            isEditingProfile.toggle()
+            isEditingProfile = true
         }
     }
     
     func updateProfile() {
         guard let user = user,
             let name = nameTF.text,
-            //let email = emailTF.text,
             let phone = phoneTF.text,
             let info = infoTV.text else { return }
-        
-        //let user = User(name: name, image: nil, email: email, phone: phone, info: info, favorites: favorites)
         
         user.name = name
         user.phone = phone
@@ -140,18 +164,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             guard let user = user else { return }
             self.user = user
             self.updateviews(with: user)
-            
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func signOut(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let rootVC = storyboard.instantiateViewController(identifier: "IntroVC") as UIViewController
+            show(rootVC, sender: sender)
+            self.tabBarController?.tabBar.alpha = 0
+        } catch {
+            NSLog("Error signing out")
+        }
     }
-    */
-
+    
 }

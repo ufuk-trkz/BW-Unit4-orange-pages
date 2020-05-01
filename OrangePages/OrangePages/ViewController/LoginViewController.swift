@@ -66,6 +66,8 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeVC = storyboard.instantiateViewController(identifier: "HomeVC")
         self.view.window?.rootViewController = homeVC
+        let profileVC = storyboard.instantiateViewController(identifier: "ProfileVC")
+        profileVC.viewDidAppear(true)
     }
     
     

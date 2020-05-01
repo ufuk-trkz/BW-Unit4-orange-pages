@@ -11,13 +11,13 @@
         <!--View Controller-->
         <scene sceneID="Fby-kq-oV5">
             <objects>
-                <viewController storyboardIdentifier="IntroVC" id="rGk-Cn-I6j" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IntroVC" modalPresentationStyle="fullScreen" id="rGk-Cn-I6j" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qqp-rC-TMU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4cB-8n-gQ9">
-                                <rect key="frame" x="40" y="80" width="295" height="67"/>
+                                <rect key="frame" x="40" y="124" width="295" height="67"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Orange ages" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oGb-Bk-R4e">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="67"/>
@@ -28,7 +28,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="a8Y-j0-hGG">
-                                <rect key="frame" x="40" y="222" width="295" height="80"/>
+                                <rect key="frame" x="40" y="266" width="295" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaf" translatesAutoresizingMaskIntoConstraints="NO" id="Jgd-Bj-NIf">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
@@ -38,7 +38,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ulU-8T-mgj">
-                                        <rect key="frame" x="72" y="4.3333333333333428" width="223" height="71.666666666666671"/>
+                                        <rect key="frame" x="72" y="4.3333333333333144" width="223" height="71.666666666666671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGt-vK-9M5">
                                                 <rect key="frame" x="0.0" y="0.0" width="141" height="23"/>
@@ -57,7 +57,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="BTn-VW-hk0">
-                                <rect key="frame" x="40" y="322" width="295" height="80"/>
+                                <rect key="frame" x="40" y="366" width="295" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fUs-9C-H7U">
                                         <rect key="frame" x="0.0" y="1" width="50" height="78.333333333333329"/>
@@ -87,7 +87,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="g6U-MR-SJ1">
-                                <rect key="frame" x="40" y="422" width="295" height="80"/>
+                                <rect key="frame" x="40" y="466" width="295" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.grid.1x2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Aby-Pl-QQq">
                                         <rect key="frame" x="0.0" y="1.6666666666666643" width="50" height="77"/>
@@ -117,7 +117,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djc-Ut-jbK">
-                                <rect key="frame" x="171.66666666666666" y="694" width="32" height="30"/>
+                                <rect key="frame" x="171.66666666666666" y="748" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <segue destination="lnN-80-YBF" kind="show" id="oNg-vt-ajW"/>
@@ -152,13 +152,13 @@
         <!--Login View Controller-->
         <scene sceneID="E16-Dx-wg7">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="lnN-80-YBF" customClass="LoginViewController" customModule="OrangePages" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" modalPresentationStyle="fullScreen" id="lnN-80-YBF" customClass="LoginViewController" customModule="OrangePages" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2N6-6w-RE0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i0I-7Q-2NW">
-                                <rect key="frame" x="16" y="20.000000000000004" width="343" height="38.333333333333343"/>
+                                <rect key="frame" x="16" y="64" width="343" height="38.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="csR-lw-bFC">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="38.333333333333336"/>
@@ -169,7 +169,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BxV-nJ-hfE">
-                                <rect key="frame" x="16" y="291.66666666666669" width="343" height="175"/>
+                                <rect key="frame" x="16" y="318.66666666666669" width="343" height="175"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9x9-Hm-P34">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="32"/>
@@ -235,7 +235,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LMw-Cq-gQT">
-                                <rect key="frame" x="163.66666666666666" y="506.66666666666674" width="48" height="78"/>
+                                <rect key="frame" x="163.66666666666666" y="533.66666666666663" width="48" height="78"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zc7-2c-V9n">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="40"/>
@@ -248,7 +248,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-kS-bFq">
-                                        <rect key="frame" x="0.0" y="47.999999999999943" width="48" height="30"/>
+                                        <rect key="frame" x="0.0" y="48" width="48" height="30"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>

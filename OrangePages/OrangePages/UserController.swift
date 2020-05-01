@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseDatabase
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -15,6 +16,7 @@ class UserController {
     
     static var shared = UserController()
     let db = Firestore.firestore()
+    let storage = Storage.storage()
     var currentUser = Auth.auth().currentUser
     var favorites: [User] = []
     
@@ -25,11 +27,10 @@ class UserController {
             if let error = error {
                 NSLog("Error creating user: \(error)")
             } else {
+                guard let userID = result?.user.uid else { return }
                 
-                let id = self.currentUser?.uid
-                
-                let contact = User(id: id ?? UUID().uuidString, name: name, image: nil, email: email, phone: nil, info: nil, favorites: [])
-                self.db.collection("users").document(result!.user.uid).setData(contact.dictionary()) { error in
+                let contact = User(id: userID, name: name, image: nil, email: email, phone: nil, info: nil, favorites: [])
+                self.db.collection("users").document(userID).setData(contact.dictionary()) { error in
                     
                     if let error = error {
                         NSLog("Error saving user data: \(error)")
@@ -86,6 +87,35 @@ class UserController {
         }
     }
     
+    func updateUserWithImage(user: User, image: UIImage, completion: @escaping (Error?) -> Void) {
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+        let storage = self.storage.reference()
+        let storageRef = storage.child("images").child("profilePictures")
+        let imageURL = storageRef.child("\(user.id).jpg")
+        
+        imageURL.putData( imageData, metadata: nil) { (_, error) in
+            imageURL.downloadURL { (url, error) in
+                if let error = error {
+                    completion(error)
+                    return
+                }
+                guard let downloadURL = url else {
+                    completion(error)
+                    return
+                }
+                user.image = downloadURL.absoluteString
+                self.updateUser(user: user) { (error) in
+                    if let error = error {
+                        completion(error)
+                        return
+                    }
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
     func updateUser(user: User, completion: @escaping (Error?) -> Void) {
         let userRef = db.collection("users")
         userRef.document(user.id).setData(user.dictionary(), completion: { (error) in
@@ -95,6 +125,7 @@ class UserController {
             }
             completion(nil)
         })
+        
     }
     
     func fovorize(to userID: String, contactID: String, completion: @escaping (Error?) -> Void) {
@@ -105,6 +136,24 @@ class UserController {
             }
         }
         completion(nil)
+    }
+    
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard  error == nil,
+                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                let data = data,
+                let image = UIImage(data: data) else {
+                    completed(nil)
+                    return
+            }
+            completed(image)
+        }
+        dataTask.resume()
     }
     
 }

@@ -17,35 +17,36 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var emailLabel: UILabel!
     
     var userController: UserController?
-    //var user: User?
-    var contact: User? {
+    var contactID: String? {
         didSet {
-            updateViews(with: contact!)
-            //getCurrentUser()
+            guard let id = contactID else { return }
+            getContact(with: id)
         }
     }
     
     func updateViews(with user: User) {
-//        contactIV.image = contact?.image
-        nameLabel.text = user.name
-        phoneLabel.text = user.phone
-        emailLabel.text = user.email
+        nameLabel?.text = user.name
+        emailLabel?.text = user.email
+        
+        if let phone = user.phone {
+            phoneLabel?.text = user.phone
+            print( phone)
+        }
+        
+        contactIV.layer.cornerRadius = contactIV.frame.size.width / 2
+        contactIV.layer.borderWidth = 1
+        contactIV.clipsToBounds = true
+        if let imageURL = user.image {
+            UserController.shared.downloadImage(from: imageURL) { (image) in
+                guard let image = image else { return }
+                DispatchQueue.main.async {
+                    self.contactIV?.image = image
+                }
+            }
+        }
     }
     
-//    func getCurrentUser() {
-//        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
-//        UserController.shared.getUser(for: currentUserID) { (user, error) in
-//            if let error = error {
-//                NSLog("Error getting user: \(error)")
-//                return
-//            }
-//
-//            guard let user = user else { return }
-//            self.user = user
-//        }
-//    }
-    
-    func getContact(userID: String) {
+    func getContact(with userID: String) {
         UserController.shared.getUser(for: userID) { (user, error) in
             if let error = error {
                 NSLog("Error getting user: \(error)")

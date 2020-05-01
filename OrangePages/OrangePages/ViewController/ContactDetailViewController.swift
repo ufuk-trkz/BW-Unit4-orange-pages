@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ContactDetailViewController: UIViewController {
 
@@ -18,12 +19,12 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var infoTV: UITextView!
     
     var contact: User?
+    var contactID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let contact = contact else { return }
-        updateviews(with: contact)
+        getContact()
     }
     
     func updateviews(with contact: User) {
@@ -31,20 +32,44 @@ class ContactDetailViewController: UIViewController {
         emailLabel.text = contact.email
         phoneLabel.text = contact.phone
         infoTV.text = contact.info
+        
+        contactIV.layer.cornerRadius = contactIV.frame.size.width / 2
+        contactIV.layer.borderWidth = 1
+        contactIV.clipsToBounds = true
+        if let imageURL = contact.image {
+            UserController.shared.downloadImage(from: imageURL) { (image) in
+                guard let image = image else { return }
+                DispatchQueue.main.async {
+                    self.contactIV?.image = image
+                }
+            }
+        }
     }
     
     @IBAction func favorize(_ sender: Any) {
-         
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        if let contact = contact {
+            UserController.shared.fovorize(to: userID, contactID: contact.id) { (error) in
+                if let error = error {
+                    NSLog("Error adding to favorites: \(error)")
+                }
+            }
+        }
+        favButton.image = UIImage(systemName: "star.fill")
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getContact() {
+        guard let contactID = self.contactID else { return }
+        UserController.shared.getUser(for: contactID) { (user, error) in
+            if let error = error {
+                NSLog("Error getting user: \(error)")
+                return
+            }
+            
+            guard let user = user else { return }
+            self.contact = user
+            self.updateviews(with: user)
+        }
     }
-    */
 
 }

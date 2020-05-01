@@ -26,8 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if Auth.auth().currentUser == nil {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let rootVC = storyboard.instantiateViewController(identifier: "IntroVC") as UIViewController
-            let rootNC = UINavigationController(rootViewController: rootVC)
-            self.window?.rootViewController = rootNC
+            self.window?.rootViewController = rootVC
             self.window?.makeKeyAndVisible()
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -35,12 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("ViewController not found")
                 return
             }
-            let rootNC = UINavigationController(rootViewController: rootVC)
-            self.window?.rootViewController = rootNC
-            self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = rootVC
         }
-        
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
